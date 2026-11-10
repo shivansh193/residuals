@@ -276,7 +276,7 @@ sh("nvidia-smi --query-gpu=name,memory.total --format=csv", check=False)
 sh("python -c 'import torch,torchaudio,transformers;print(torch.__version__,torchaudio.__version__,transformers.__version__)'", check=False)
 sh("apt-get -qq update >/dev/null 2>&1; apt-get -qq install -y espeak-ng >/dev/null 2>&1", check=False)
 
-sh(f"python -m venv --without-pip --system-site-packages {T}/vk && {T}/vk/bin/python -m pip install -q --no-deps kokoro==0.9.4 misaki==0.9.4 && {T}/vk/bin/python -m pip install -q --prefer-binary num2words phonemizer-fork espeakng-loader loguru addict soundfile && ({T}/vk/bin/python -c 'import spacy' || {T}/vk/bin/python -m pip install -q --only-binary=:all: spacy) && {T}/vk/bin/python -m spacy download en_core_web_sm")
+sh(f"python -m venv --without-pip --system-site-packages {T}/vk && {T}/vk/bin/python -m pip install -q --no-deps --ignore-requires-python kokoro==0.9.4 misaki==0.9.4 && {T}/vk/bin/python -m pip install -q --prefer-binary num2words phonemizer-fork espeakng-loader loguru addict soundfile && ({T}/vk/bin/python -c 'import spacy' || {T}/vk/bin/python -m pip install -q --only-binary=:all: spacy) && {T}/vk/bin/python -m spacy download en_core_web_sm")
 sh(f"{T}/vk/bin/python {T}/phase_a.py")
 
 sh(f"python -m venv --without-pip --system-site-packages {T}/vf && {T}/vf/bin/python -m pip install -q --prefer-binary --ignore-requires-python f5-tts soundfile")

@@ -1,7 +1,7 @@
 """Residuals API."""
-import glob, json, os, time
+import glob, json, os, re, secrets, time
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
@@ -13,7 +13,7 @@ try:
 except ImportError:
     pass
 
-from server import billing, db, gemini, paypal, policy, seed, service
+from server import billing, db, enrol, gemini, paypal, policy, seed, service
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIX = os.path.join(ROOT, "fixtures")
@@ -171,6 +171,47 @@ def alerts(voice_id: str | None = None):
     q = "select a.*, v.name voice_name from alerts a join voices v on v.id=a.voice_id"
     return db.rows(q + (" where a.voice_id=?" if voice_id else "") + " order by created_at desc limit 100",
                    *([voice_id] if voice_id else []))
+
+
+@app.get("/api/enrol/challenge")
+def enrol_challenge():
+    return enrol.new_challenge()
+
+
+@app.post("/api/enrol")
+async def enrol_voice(name: str = Form(...), paypal_email: str = Form(...), terms_text: str = Form(...),
+                      policy_json: str = Form(...), challenge_id: str = Form(...),
+                      consent_audio: UploadFile = File(...), liveness_audio: UploadFile = File(...),
+                      reference_audio: UploadFile | None = File(None)):
+    phrase = enrol.take_challenge(challenge_id)
+    if not phrase:
+        raise HTTPException(400, "Liveness phrase expired or already used. Reload the page for a new one.")
+    if not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", paypal_email):
+        raise HTTPException(400, "Enter a valid PayPal email")
+    c, l = await consent_audio.read(), await liveness_audio.read()
+    if not (2_000 < len(c) < 5_000_000 and 1_000 < len(l) < 3_000_000):
+        raise HTTPException(400, "Recordings are too short or too long")
+    try:
+        r = enrol.check(name, c, (consent_audio.content_type or "audio/webm").split(";")[0],
+                        l, (liveness_audio.content_type or "audio/webm").split(";")[0], phrase)
+    except gemini.GeminiError as e:
+        raise HTTPException(503, f"AI temporarily unavailable: {e}")
+    checks = {"consent_ok": r["consent_ok"], "consent_transcript": r["consent_transcript"],
+              "liveness_ok": r["liveness_ok"], "liveness_transcript": r["liveness_transcript"],
+              "liveness_expected": phrase, "liveness_similarity": r["liveness_similarity"],
+              "same_speaker_likely": r["same_speaker_likely"],
+              "sounds_like_playback_or_synthetic": r["sounds_like_playback_or_synthetic"], "reason": r["reason"]}
+    if not r["verified"]:
+        return {"verified": False, "checks": checks}
+    pol = policy.normalise({"rates": [{"use_type": k, "cents_per_min": v} for k, v in
+                                      json.loads(policy_json).get("rates_cents_per_min", {}).items()],
+                            **{k: v for k, v in json.loads(policy_json).items() if k != "rates_cents_per_min"}})
+    vid = "v_" + secrets.token_hex(4)
+    db.execute("insert into voices(id,name,owner_paypal_email,terms_text,policy_json,consent_json,enrolled_at,synthetic,status)"
+               " values (?,?,?,?,?,?,?,0,'pending_voiceprint')", vid, name[:80], paypal_email, terms_text[:2000],
+               json.dumps(pol), json.dumps({"type": "self_enrolled", **checks}), time.time())
+    return {"verified": True, "voice_id": vid, "status": "pending_voiceprint", "checks": checks,
+            "note": "Your voiceprint is computed by the GPU worker from your reference speech before matching starts."}
 
 
 @app.post("/webhooks/paypal")
