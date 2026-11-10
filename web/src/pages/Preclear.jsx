@@ -193,7 +193,7 @@ function PayPanel({ inv }) {
       {err && <div className="err" style={{ marginTop: 10 }}>{err}</div>}
       <div className="rail" style={{ marginTop: 16 }}>
         {step(true, false, 1, 'Invoice created and sent', <>POST /v2/invoicing/invoices → <span className="ppid">{inv.id}</span></>)}
-        {step(paid, !paid, 2, 'Waiting for payment', paid ? 'PayPal sent INVOICING.INVOICE.PAID. The webhook signature was verified by PayPal.' : 'Pay as the sandbox buyer, or use "Mark paid (sandbox)". This page updates by itself.')}
+        {step(paid, !paid, 2, 'Waiting for payment', paid ? 'PayPal sent INVOICING.INVOICE.PAID. The webhook signature was verified by PayPal.' : 'Pay as the sandbox buyer, or use "Mark paid (sandbox)". PayPal usually sends the paid webhook within 1–2 minutes; this page updates by itself.')}
         {step(payoutSent, paid && !payoutSent, 3, 'Royalty paid out to each voice owner', payoutSent ? <>PayPal Payouts batch {[...new Set(uses.map(u => u.payout_batch_id))].map(b => <span key={b} className="ppid" style={{ marginRight: 4 }}>{b}</span>)}</> : 'POST /v1/payments/payouts, idempotent per invoice and voice')}
         {step(payoutDone, payoutSent && !payoutDone, 4, 'Payout confirmed', payoutDone ? 'PAYMENT.PAYOUTS-ITEM.SUCCEEDED received and verified.' : 'Waiting for PayPal\'s payout webhook')}
       </div>
