@@ -17,7 +17,7 @@ from server import billing, db, enrol, gemini, paypal, policy, seed, service
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIX = os.path.join(ROOT, "fixtures")
-app = FastAPI(title="Residuals API", version="0.1.0",
+app = FastAPI(title="Residuals API", version="0.1.0", servers=[{"url": "https://residuals.onrender.com"}],
               description="Royalties for licensed AI voice clones, paid through PayPal (sandbox).")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
@@ -37,12 +37,79 @@ def demo_files():
 
 # ---------- public API ----------
 
+class Segment(BaseModel):
+    start: float
+    end: float
+    voice_id: str | None = None
+    score: float
+    clone_prob: float
+    text: str | None = None
+
+
+class Match(BaseModel):
+    id: str
+    seq: int
+    voice_id: str
+    voice_name: str
+    seconds: float
+    is_clone: int
+    clone_prob: float
+    confidence: float
+    use_type: str
+    decision: str
+    rate_cents_per_min: int
+    amount_cents: int
+    platform_fee_cents: int
+    royalty_cents: int
+    invoice_id: str | None = None
+    status: str
+    hash: str
+    attribution_required: bool = False
+    segments: list[Segment] = []
+
+
+class InvoiceOut(BaseModel):
+    id: str
+    url: str
+    total: str
+    offer: bool
+    status: str
+
+
+class ScanResult(BaseModel):
+    scan_id: str
+    file_name: str
+    use_type: str
+    use_type_reason: str | None = None
+    duration_s: float | None = None
+    matches: list[Match]
+    invoice: InvoiceOut | None = None
+
+
+class Policy(BaseModel):
+    currency: str
+    rates_cents_per_min: dict[str, int]
+    default_rate_cents_per_min: int
+    free_for: list[str]
+    blocked: list[str]
+    attribution_required: bool
+    notes: str = ""
+
+
+class PolicyOut(BaseModel):
+    voice_id: str
+    name: str
+    terms_text: str
+    policy: Policy
+    consent: dict
+
+
 class ScanReq(BaseModel):
     file_id: str
     user_id: str
 
 
-@app.post("/scan", tags=["public"], summary="Scan audio for registered voices, apply each owner's terms, bill via PayPal")
+@app.post("/scan", tags=["public"], response_model=ScanResult, operation_id="scan", summary="Scan audio for registered voices, apply each owner's terms, bill via PayPal")
 def scan(req: ScanReq):
     a = demo_files().get(req.file_id)
     if not a:
@@ -55,7 +122,7 @@ def scan(req: ScanReq):
         raise HTTPException(502, f"PayPal error: {e}")
 
 
-@app.get("/policy/{voice_id}", tags=["public"], summary="A registered voice's machine-readable licence policy")
+@app.get("/policy/{voice_id}", tags=["public"], response_model=PolicyOut, operation_id="getPolicy", summary="A registered voice's machine-readable licence policy")
 def get_policy(voice_id: str):
     v = db.voice(voice_id)
     if not v:

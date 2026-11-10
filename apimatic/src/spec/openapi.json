@@ -1,0 +1,579 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Residuals API",
+  "description": "Royalties for licensed AI voice clones, paid through PayPal (sandbox).",
+  "version": "0.1.0"
+ },
+ "servers": [
+  {
+   "url": "https://residuals.onrender.com"
+  }
+ ],
+ "paths": {
+  "/scan": {
+   "post": {
+    "tags": [
+     "public"
+    ],
+    "summary": "Scan audio for registered voices, apply each owner's terms, bill via PayPal",
+    "operationId": "scan",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ScanReq"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ScanResult"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/policy/{voice_id}": {
+   "get": {
+    "tags": [
+     "public"
+    ],
+    "summary": "A registered voice's machine-readable licence policy",
+    "operationId": "getPolicy",
+    "parameters": [
+     {
+      "name": "voice_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Voice Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/PolicyOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "Body_enrol_voice_api_enrol_post": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "paypal_email": {
+      "type": "string",
+      "title": "Paypal Email"
+     },
+     "terms_text": {
+      "type": "string",
+      "title": "Terms Text"
+     },
+     "policy_json": {
+      "type": "string",
+      "title": "Policy Json"
+     },
+     "challenge_id": {
+      "type": "string",
+      "title": "Challenge Id"
+     },
+     "consent_audio": {
+      "type": "string",
+      "format": "binary",
+      "title": "Consent Audio"
+     },
+     "liveness_audio": {
+      "type": "string",
+      "format": "binary",
+      "title": "Liveness Audio"
+     },
+     "reference_audio": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "binary"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Reference Audio"
+     }
+    },
+    "type": "object",
+    "required": [
+     "name",
+     "paypal_email",
+     "terms_text",
+     "policy_json",
+     "challenge_id",
+     "consent_audio",
+     "liveness_audio"
+    ],
+    "title": "Body_enrol_voice_api_enrol_post"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "InvoiceOut": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "url": {
+      "type": "string",
+      "title": "Url"
+     },
+     "total": {
+      "type": "string",
+      "title": "Total"
+     },
+     "offer": {
+      "type": "boolean",
+      "title": "Offer"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "url",
+     "total",
+     "offer",
+     "status"
+    ],
+    "title": "InvoiceOut"
+   },
+   "Match": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "seq": {
+      "type": "integer",
+      "title": "Seq"
+     },
+     "voice_id": {
+      "type": "string",
+      "title": "Voice Id"
+     },
+     "voice_name": {
+      "type": "string",
+      "title": "Voice Name"
+     },
+     "seconds": {
+      "type": "number",
+      "title": "Seconds"
+     },
+     "is_clone": {
+      "type": "integer",
+      "title": "Is Clone"
+     },
+     "clone_prob": {
+      "type": "number",
+      "title": "Clone Prob"
+     },
+     "confidence": {
+      "type": "number",
+      "title": "Confidence"
+     },
+     "use_type": {
+      "type": "string",
+      "title": "Use Type"
+     },
+     "decision": {
+      "type": "string",
+      "title": "Decision"
+     },
+     "rate_cents_per_min": {
+      "type": "integer",
+      "title": "Rate Cents Per Min"
+     },
+     "amount_cents": {
+      "type": "integer",
+      "title": "Amount Cents"
+     },
+     "platform_fee_cents": {
+      "type": "integer",
+      "title": "Platform Fee Cents"
+     },
+     "royalty_cents": {
+      "type": "integer",
+      "title": "Royalty Cents"
+     },
+     "invoice_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Invoice Id"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "hash": {
+      "type": "string",
+      "title": "Hash"
+     },
+     "attribution_required": {
+      "type": "boolean",
+      "title": "Attribution Required",
+      "default": false
+     },
+     "segments": {
+      "items": {
+       "$ref": "#/components/schemas/Segment"
+      },
+      "type": "array",
+      "title": "Segments",
+      "default": []
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "seq",
+     "voice_id",
+     "voice_name",
+     "seconds",
+     "is_clone",
+     "clone_prob",
+     "confidence",
+     "use_type",
+     "decision",
+     "rate_cents_per_min",
+     "amount_cents",
+     "platform_fee_cents",
+     "royalty_cents",
+     "status",
+     "hash"
+    ],
+    "title": "Match"
+   },
+   "Policy": {
+    "properties": {
+     "currency": {
+      "type": "string",
+      "title": "Currency"
+     },
+     "rates_cents_per_min": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "Rates Cents Per Min"
+     },
+     "default_rate_cents_per_min": {
+      "type": "integer",
+      "title": "Default Rate Cents Per Min"
+     },
+     "free_for": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Free For"
+     },
+     "blocked": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Blocked"
+     },
+     "attribution_required": {
+      "type": "boolean",
+      "title": "Attribution Required"
+     },
+     "notes": {
+      "type": "string",
+      "title": "Notes",
+      "default": ""
+     }
+    },
+    "type": "object",
+    "required": [
+     "currency",
+     "rates_cents_per_min",
+     "default_rate_cents_per_min",
+     "free_for",
+     "blocked",
+     "attribution_required"
+    ],
+    "title": "Policy"
+   },
+   "PolicyOut": {
+    "properties": {
+     "voice_id": {
+      "type": "string",
+      "title": "Voice Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "terms_text": {
+      "type": "string",
+      "title": "Terms Text"
+     },
+     "policy": {
+      "$ref": "#/components/schemas/Policy"
+     },
+     "consent": {
+      "additionalProperties": true,
+      "type": "object",
+      "title": "Consent"
+     }
+    },
+    "type": "object",
+    "required": [
+     "voice_id",
+     "name",
+     "terms_text",
+     "policy",
+     "consent"
+    ],
+    "title": "PolicyOut"
+   },
+   "ScanReq": {
+    "properties": {
+     "file_id": {
+      "type": "string",
+      "title": "File Id"
+     },
+     "user_id": {
+      "type": "string",
+      "title": "User Id"
+     }
+    },
+    "type": "object",
+    "required": [
+     "file_id",
+     "user_id"
+    ],
+    "title": "ScanReq"
+   },
+   "ScanResult": {
+    "properties": {
+     "scan_id": {
+      "type": "string",
+      "title": "Scan Id"
+     },
+     "file_name": {
+      "type": "string",
+      "title": "File Name"
+     },
+     "use_type": {
+      "type": "string",
+      "title": "Use Type"
+     },
+     "use_type_reason": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Use Type Reason"
+     },
+     "duration_s": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Duration S"
+     },
+     "matches": {
+      "items": {
+       "$ref": "#/components/schemas/Match"
+      },
+      "type": "array",
+      "title": "Matches"
+     },
+     "invoice": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/InvoiceOut"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "scan_id",
+     "file_name",
+     "use_type",
+     "matches"
+    ],
+    "title": "ScanResult"
+   },
+   "Segment": {
+    "properties": {
+     "start": {
+      "type": "number",
+      "title": "Start"
+     },
+     "end": {
+      "type": "number",
+      "title": "End"
+     },
+     "voice_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Voice Id"
+     },
+     "score": {
+      "type": "number",
+      "title": "Score"
+     },
+     "clone_prob": {
+      "type": "number",
+      "title": "Clone Prob"
+     },
+     "text": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Text"
+     }
+    },
+    "type": "object",
+    "required": [
+     "start",
+     "end",
+     "score",
+     "clone_prob"
+    ],
+    "title": "Segment"
+   },
+   "TermsReq": {
+    "properties": {
+     "terms": {
+      "type": "string",
+      "title": "Terms"
+     }
+    },
+    "type": "object",
+    "required": [
+     "terms"
+    ],
+    "title": "TermsReq"
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   }
+  }
+ }
+}
