@@ -11,18 +11,36 @@
 # Use-type classification (Gemini) runs afterwards on the transcripts, outside Kaggle.
 import glob, json, os, subprocess, sys
 
-IN = glob.glob("/kaggle/input/**/out/spec.json", recursive=True)
-assert IN, "voice-spikes output not mounted"
+IN = glob.glob("/kaggle/input/**/spec.json", recursive=True)
+if not IN:
+    subprocess.run("find /kaggle/input -maxdepth 4 | head -50", shell=True)
+assert IN, "persona dataset not mounted"
 SRC = os.path.dirname(IN[0])
 W = "/kaggle/working/out"
 os.makedirs(W, exist_ok=True)
+
+
+class _Tee:  # keep a copy of stdout/stderr in /kaggle/working so a crashed session still leaves a log
+    def __init__(self, *s): self.s = s
+    def write(self, x):
+        for f in self.s: f.write(x); f.flush()
+    def flush(self):
+        for f in self.s: f.flush()
+
+
+_log = open(f"{W}/run.log", "a")
+sys.stdout, sys.stderr = _Tee(sys.stdout, _log), _Tee(sys.stderr, _log)
 print("source", SRC, flush=True)
 subprocess.run("pip install -q silero-vad speechbrain==1.0.3", shell=True, check=True)
 
 import numpy as np, soundfile as sf, librosa, torch
+import torchaudio
+if not hasattr(torchaudio, "list_audio_backends"):  # torchaudio 2.9+ removed it; speechbrain 1.0.3 still calls it
+    torchaudio.list_audio_backends = lambda: ["soundfile"]
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import roc_curve
 
 SPEC = json.load(open(f"{SRC}/spec.json"))
 SR = 16000
@@ -149,6 +167,76 @@ X, Y, G = np.array(X), np.array(Y), np.array(G)
 probes = {p: make_pipeline(StandardScaler(), LogisticRegression(max_iter=3000, C=0.1)).fit(X[G != p], Y[G != p])
           for p in ids}
 generic = make_pipeline(StandardScaler(), LogisticRegression(max_iter=3000, C=0.1)).fit(X, Y)
+
+# ---------- spikes 3 + 4 on whole utterances ----------
+spikes = {}
+utt = {}
+for pid in ids:
+    for i in range(40):
+        for kind in ("orig", "clone"):
+            utt[(pid, kind, i)] = emb_batch([load(f"{SRC}/{pid}/{kind}_{i:02d}.wav")])[0]
+
+
+def eer_of(kinds):
+    sc, lb = [], []
+    for (pid, kind, i), e in utt.items():
+        if kind in kinds:
+            for j, q in enumerate(ids):
+                sc.append(float(E[j] @ e)); lb.append(int(q == pid))
+    sc, lb = np.array(sc), np.array(lb)
+    f, t, th = roc_curve(lb, sc)
+    k = np.nanargmin(np.abs((1 - t) - f))
+    return {"eer": round(float((f[k] + 1 - t[k]) / 2), 4), "threshold": round(float(th[k]), 4),
+            "n_target": int(lb.sum()), "n_nontarget": int((1 - lb).sum()),
+            "target_mean": round(float(sc[lb == 1].mean()), 3), "nontarget_mean": round(float(sc[lb == 0].mean()), 3),
+            "nontarget_max": round(float(sc[lb == 0].max()), 3), "target_min": round(float(sc[lb == 1].min()), 3)}
+
+
+sv = {k: eer_of(v) for k, v in [("originals", ("orig",)), ("clones", ("clone",)), ("all", ("orig", "clone"))]}
+th_all = sv["all"]["threshold"]
+tp = fp = fn = 0
+for (pid, kind, i), e in utt.items():
+    sc = E @ e
+    j = int(sc.argmax())
+    if sc[j] >= th_all and ids[j] == pid:
+        tp += 1
+    elif sc[j] >= th_all:
+        fp += 1; fn += 1
+    else:
+        fn += 1
+sv["operating_point"] = {"threshold": th_all, "precision": round(tp / max(tp + fp, 1), 4), "recall": round(tp / (tp + fn), 4)}
+sv["enrol_similarity"] = {a: {b: round(float(enrol[a] @ enrol[b]), 3) for b in ids} for a in ids}
+spikes["speaker_verification"] = sv
+pred = np.zeros_like(Y)
+per = {}
+for p in ids:
+    m = G == p
+    pred[m] = probes[p].predict(X[m])
+    per[p] = round(float((pred[m] == Y[m]).mean()), 4)
+spikes["clone_detection_w2v2_probe_lopo"] = {
+    "accuracy": round(float((pred == Y).mean()), 4),
+    "false_positive_rate_on_originals": round(float(pred[Y == 0].mean()), 4),
+    "recall_on_clones": round(float(pred[Y == 1].mean()), 4), "per_heldout_persona_accuracy": per,
+    "n": int(len(Y))}
+try:
+    from transformers import pipeline as _p
+    det = _p("audio-classification", model="MelodyMachine/Deepfake-audio-detection-V2", device=0 if dev == "cuda" else -1)
+    fake = []
+    for pid in ids:
+        for i in range(40):
+            for kind in ("orig", "clone"):
+                o = det({"raw": load(f"{SRC}/{pid}/{kind}_{i:02d}.wav"), "sampling_rate": SR}, top_k=None)
+                d = {x["label"].lower(): x["score"] for x in o}
+                fake.append((kind, d.get("fake", 1 - d.get("real", 0.5))))
+    spikes["clone_detection_pretrained_zero_shot"] = {
+        "model": "MelodyMachine/Deepfake-audio-detection-V2",
+        "labels_seen": sorted(d.keys()),
+        "flagged_fake_originals": round(float(np.mean([f > 0.5 for k, f in fake if k == "orig"])), 4),
+        "flagged_fake_clones": round(float(np.mean([f > 0.5 for k, f in fake if k == "clone"])), 4)}
+except Exception as ex:
+    spikes["clone_detection_pretrained_zero_shot"] = {"error": repr(ex)[:300]}
+json.dump(spikes, open(f"{W}/spike_results.json", "w"), indent=1)
+print("SPIKES", json.dumps(spikes), flush=True)
 
 # ---------- 2c. ASR ----------
 from transformers import pipeline as hf_pipeline

@@ -1,0 +1,134 @@
+{
+ "personas": [
+  {
+   "id": "mara",
+   "name": "Mara Vell",
+   "mix": {
+    "af_heart": 0.6,
+    "af_nicole": 0.4
+   },
+   "speed": 1.0
+  },
+  {
+   "id": "theo",
+   "name": "Theo Rusk",
+   "mix": {
+    "am_michael": 0.5,
+    "am_fenrir": 0.5
+   },
+   "speed": 0.95
+  },
+  {
+   "id": "juno",
+   "name": "Juno Park",
+   "mix": {
+    "af_bella": 0.5,
+    "af_sky": 0.5
+   },
+   "speed": 1.05
+  },
+  {
+   "id": "silas",
+   "name": "Silas Orne",
+   "mix": {
+    "am_onyx": 0.6,
+    "am_eric": 0.4
+   },
+   "speed": 0.92
+  },
+  {
+   "id": "ivy",
+   "name": "Ivy Calder",
+   "mix": {
+    "af_sarah": 0.6,
+    "af_jessica": 0.4
+   },
+   "speed": 1.0
+  }
+ ],
+ "ref_text": "I am recording this short sample of my own voice so that my licensed clone can be tracked and paid fairly.",
+ "sentences": [
+  "Introducing the all new Brightline blender, with twice the power and half the noise.",
+  "This weekend only, every pair of running shoes is thirty percent off. Don't miss it.",
+  "Fresh coffee, delivered to your door every Monday. Your first box is on us.",
+  "Upgrade to Nimbus Cloud today and get unlimited storage for your whole family.",
+  "Feel the difference with Harbor mattresses. Try one free for a hundred nights.",
+  "Book your summer getaway now and save up to two hundred dollars on flights.",
+  "Crisp, cold and refreshing. Polar Spring water, straight from the mountains.",
+  "Switch your phone plan in five minutes and keep your number. It's that easy.",
+  "Chapter three. The letter arrived on a Tuesday, folded twice and sealed with blue wax.",
+  "The river had changed its course many times over the centuries, carving the valley we see today.",
+  "She paused at the door, listening to the rain, and wondered whether he would come back at all.",
+  "In the deep ocean, where sunlight never reaches, strange creatures make their own light.",
+  "The old lighthouse keeper kept a journal, and every entry began with the weather.",
+  "By the end of the war, the small village had lost half of its families to the city.",
+  "Bees communicate the location of flowers to each other with a dance inside the hive.",
+  "He counted the steps to the top of the tower. There were exactly two hundred and twelve.",
+  "Welcome to module two. In this lesson, we will cover the basics of workplace safety.",
+  "Before you begin, make sure your headphones are connected and your volume is turned up.",
+  "Click next to continue, or select replay to watch this section again.",
+  "Quarterly revenue grew by eight percent, driven mostly by strong sales in the north region.",
+  "Stay behind me. The bridge won't hold us both if we run.",
+  "You found the silver key. Maybe it opens the door in the east tower.",
+  "Traveller, you look tired. Sit by the fire and tell me where you have come from.",
+  "Shields are down to forty percent. We need to retreat, now!",
+  "Every donation helps us plant trees in communities that lost their forests to wildfire.",
+  "Remember to check on your elderly neighbours during the heatwave. A short visit can save a life.",
+  "Our food bank is open every Saturday morning. Everyone is welcome, no questions asked.",
+  "Volunteers are needed to help clean the beach this Sunday. Gloves and bags are provided.",
+  "Vote for change this November. Together we can fix the roads and lower your taxes.",
+  "My opponent has failed this district for ten years. It's time for new leadership.",
+  "Paid for by the committee to elect a better council. Make your voice heard on election day.",
+  "Support Measure Twelve and keep our schools funded for the next generation.",
+  "Hey everyone, welcome back to the show. Today we're talking about the best budget cameras.",
+  "Don't forget to like and subscribe, it really helps the channel grow.",
+  "So I tried cooking every meal at home for a month, and here's what happened.",
+  "Quick tip: if your bread is going stale, sprinkle it with water and warm it in the oven.",
+  "I never said I would stay. I only said I would think about it.",
+  "The train to the city leaves from platform four in ten minutes.",
+  "Thank you for calling. Your call is important to us, please stay on the line.",
+  "Tomorrow will be mostly sunny with a light breeze from the west."
+ ],
+ "use_types": [
+  "ad",
+  "ad",
+  "ad",
+  "ad",
+  "ad",
+  "ad",
+  "ad",
+  "ad",
+  "narration",
+  "narration",
+  "narration",
+  "narration",
+  "narration",
+  "narration",
+  "narration",
+  "narration",
+  "elearning",
+  "elearning",
+  "elearning",
+  "elearning",
+  "game",
+  "game",
+  "game",
+  "game",
+  "nonprofit",
+  "nonprofit",
+  "nonprofit",
+  "nonprofit",
+  "political",
+  "political",
+  "political",
+  "political",
+  "social",
+  "social",
+  "social",
+  "social",
+  "other",
+  "other",
+  "other",
+  "other"
+ ]
+}
