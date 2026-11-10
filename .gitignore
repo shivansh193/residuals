@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+kaggle.json
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+dist/
+build/
+.cache/
+pretrained_models/
+*.db
+*.sqlite
+/raw_audio/
+.DS_Store
