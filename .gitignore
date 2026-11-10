@@ -15,3 +15,4 @@ pretrained_models/
 *.sqlite
 /raw_audio/
 .DS_Store
+kaggle/*/kernel-metadata.json
