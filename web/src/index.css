@@ -132,3 +132,11 @@ label.field { display: grid; gap: 6px; font-weight: 600; font-size: 13px; }
 
 /* AG Grid theme overrides */
 .ledger-grid { height: 460px; width: 100%; }
+
+/* Bryntum timeline skin */
+.bryntum-wrap { border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; background: var(--card); }
+.bryntum-wrap .b-scheduler { --b-font-family: var(--sans); font-family: var(--sans); }
+.bryntum-wrap .b-sch-event.seg-clone { background: repeating-linear-gradient(135deg, var(--clone-soft) 0 6px, #ffd0bd 6px 12px) !important; border: 1.5px solid var(--clone) !important; color: #a8300a !important; font-weight: 600; border-radius: 7px; }
+.bryntum-wrap .b-sch-event.seg-orig { background: var(--orig-soft) !important; border: 1.5px solid var(--orig) !important; color: var(--orig) !important; font-weight: 600; border-radius: 7px; }
+.bryntum-wrap .b-sch-event.seg-unknown { background: var(--paper-2) !important; border: 1.5px dashed var(--ink-3) !important; color: var(--ink-3) !important; border-radius: 7px; }
+.bryntum-wrap .b-sch-timerange.playhead, .bryntum-wrap .b-sch-line.playhead { border-left: 2px solid var(--clone) !important; }

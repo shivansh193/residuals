@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api, secs, usd, voiceColor } from '../api.js'
 import Waveform from '../components/Waveform.jsx'
-import SegmentTimeline from '../components/SegmentTimeline.jsx'
+import SegmentTimeline from '../components/BryntumTimeline.jsx'
 
 const DECISION_TEXT = {
   bill: 'Licensed: billed at the owner\'s rate',
