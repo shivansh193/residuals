@@ -260,11 +260,11 @@ sh("nvidia-smi --query-gpu=name,memory.total --format=csv", check=False)
 sh("python -c 'import torch,torchaudio,transformers;print(torch.__version__,torchaudio.__version__,transformers.__version__)'", check=False)
 sh("apt-get -qq update >/dev/null 2>&1; apt-get -qq install -y espeak-ng >/dev/null 2>&1", check=False)
 
-sh(f"python -m venv --system-site-packages {T}/vk && {T}/vk/bin/pip install -q kokoro==0.9.4 'misaki[en]' soundfile")
+sh(f"python -m venv --without-pip --system-site-packages {T}/vk && {T}/vk/bin/python -m pip install -q --ignore-requires-python kokoro==0.9.4 'misaki[en]' soundfile")
 sh(f"{T}/vk/bin/python {T}/phase_a.py")
 
-sh(f"python -m venv --system-site-packages {T}/vf && {T}/vf/bin/pip install -q f5-tts soundfile")
-sh(f"{T}/vf/bin/pip install -q torchcodec", check=False)
+sh(f"python -m venv --without-pip --system-site-packages {T}/vf && {T}/vf/bin/python -m pip install -q --ignore-requires-python f5-tts soundfile")
+sh(f"{T}/vf/bin/python -m pip install -q torchcodec", check=False)
 sh(f"{T}/vf/bin/python {T}/phase_b.py")
 
 sh("pip install -q speechbrain==1.0.3")
