@@ -27,6 +27,20 @@ def _startup():
     seed.seed()
 
 
+_hits = {}
+
+
+def limit(req: Request, bucket: str, n: int, per_s: int = 3600):
+    """Tiny in-memory per-IP rate limit for endpoints that call PayPal or Gemini (public demo)."""
+    ip = (req.headers.get("x-forwarded-for") or (req.client.host if req.client else "?")).split(",")[0].strip()
+    now = time.time()
+    q = [t for t in _hits.get((bucket, ip), []) if now - t < per_s]
+    if len(q) >= n:
+        raise HTTPException(429, f"Demo rate limit: {n} per hour for this action. Try again later.")
+    q.append(now)
+    _hits[(bucket, ip)] = q
+
+
 def demo_files():
     out = {}
     for p in sorted(glob.glob(os.path.join(FIX, "analysis", "*.json"))):
@@ -110,7 +124,8 @@ class ScanReq(BaseModel):
 
 
 @app.post("/scan", tags=["public"], response_model=ScanResult, operation_id="scan", summary="Scan audio for registered voices, apply each owner's terms, bill via PayPal")
-def scan(req: ScanReq):
+def scan(req: ScanReq, request: Request):
+    limit(request, "scan", 30)
     a = demo_files().get(req.file_id)
     if not a:
         raise HTTPException(404, "unknown file_id; see GET /api/demo-files")
@@ -175,7 +190,8 @@ class TermsReq(BaseModel):
 
 
 @app.post("/api/terms/parse")
-def parse_terms(req: TermsReq):
+def parse_terms(req: TermsReq, request: Request):
+    limit(request, "terms", 15)
     if not req.terms.strip() or len(req.terms) > 2000:
         raise HTTPException(400, "terms must be 1-2000 characters")
     try:
@@ -205,7 +221,8 @@ def takedown(scan_id: str, voice_id: str):
 
 
 @app.post("/api/invoices/{inv_id}/sandbox-pay")
-def sandbox_pay(inv_id: str):
+def sandbox_pay(inv_id: str, request: Request):
+    limit(request, "pay", 30)
     if not db.one("select 1 from scans where invoice_id=?", inv_id):
         raise HTTPException(404, "not a Residuals invoice")
     return {"status": service.sandbox_mark_paid(inv_id),
@@ -246,10 +263,11 @@ def enrol_challenge():
 
 
 @app.post("/api/enrol")
-async def enrol_voice(name: str = Form(...), paypal_email: str = Form(...), terms_text: str = Form(...),
+async def enrol_voice(request: Request, name: str = Form(...), paypal_email: str = Form(...), terms_text: str = Form(...),
                       policy_json: str = Form(...), challenge_id: str = Form(...),
                       consent_audio: UploadFile = File(...), liveness_audio: UploadFile = File(...),
                       reference_audio: UploadFile | None = File(None)):
+    limit(request, "enrol", 6)
     phrase = enrol.take_challenge(challenge_id)
     if not phrase:
         raise HTTPException(400, "Liveness phrase expired or already used. Reload the page for a new one.")
