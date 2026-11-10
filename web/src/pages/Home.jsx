@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const steps = [
   ['01', 'Enrol, with consent', 'The owner records a consent statement and reads a random liveness phrase aloud. Gemini checks that the right words were spoken, so nobody can enrol someone else from an old recording.'],
-  ['02', 'Set terms in plain English', '"$0.50 a minute for ads, free for non-profits, never for politics." Gemini turns that into a machine-readable policy, and the owner confirms it.'],
+  ['02', 'Set terms in plain English', '"$30 a minute for ads, free for non-profits, never for politics." Gemini turns that into a machine-readable policy, and the owner confirms it.'],
   ['03', 'Detect the voice, even as a clone', 'Speech detection, speaker embeddings (ECAPA) matched against enrolled voices, a clone-vs-original detector, transcription, and an LLM that classifies the use.'],
   ['04', 'Bill through PayPal', 'Minutes × the owner\'s rate becomes a PayPal invoice (Invoicing v2). Unlicensed use gets a retroactive licence offer instead of a lawsuit.'],
   ['05', 'Pay the owner automatically', 'PayPal\'s signed INVOICING.INVOICE.PAID webhook triggers a PayPal Payout of the royalty to the owner, with the platform fee shown openly.'],

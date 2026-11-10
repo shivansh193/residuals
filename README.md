@@ -4,7 +4,7 @@
 
 Live demo: **https://residuals.onrender.com** (PayPal **sandbox**; no real money moves) · API docs: [/docs](https://residuals.onrender.com/docs) · Licence: MIT
 
-A voice owner enrols their own voice and sets terms in plain English: *"$0.50 a minute for ads, free for non-profits, never for politics."* Residuals finds that voice in submitted audio, even when it's an AI clone, and measures the minutes. It bills the user with a **PayPal invoice**. When the invoice is paid, PayPal's signed webhook triggers a **PayPal Payout** of the royalty to the owner. Unlicensed use gets a one-click retroactive licence offer instead of a lawsuit. Blocked uses, such as political ads, get no offer: the owner is alerted with the evidence.
+A voice owner enrols their own voice and sets terms in plain English: *"$30 a minute for ads, free for non-profits, never for politics."* Residuals finds that voice in submitted audio, even when it's an AI clone, and measures the minutes. It bills the user with a **PayPal invoice**. When the invoice is paid, PayPal's signed webhook triggers a **PayPal Payout** of the royalty to the owner. Unlicensed use gets a one-click retroactive licence offer instead of a lawsuit. Blocked uses, such as political ads, get no offer: the owner is alerted with the evidence.
 
 > **The one rule: consent first.** Only voices whose owners enrolled themselves, with a consent recording and a live liveness phrase, can be registered. Every voice in this demo is a fictional, **fully synthetic** persona. No real person's voice was recorded or cloned ([ASSETS.md](ASSETS.md)).
 
@@ -83,7 +83,22 @@ The platform fee (10%) is shown on every ledger row, and so is PayPal's payout f
 
 ## Evaluation
 
-EVAL_PLACEHOLDER
+Small and synthetic, and honest about it: 5 fictional personas, 400 test clips (200 Kokoro "originals", 200 F5-TTS zero-shot clones), and 5 demo files with ground truth built from their known composition. Full write-up: [docs/SPIKES.md](docs/SPIKES.md). Raw numbers: [fixtures/eval/](fixtures/eval).
+
+| What | Result |
+|---|---|
+| **Speaker match** (ECAPA), whole clips | EER **0.0%** for originals and for AI clones; precision **1.00** / recall **1.00** at the operating threshold |
+| Speaker match, 1.5 s windows (as the pipeline uses) | EER **1.1%** |
+| Clones still match their owner | clone scores average 0.82 vs 0.86 for originals; the highest impostor score is 0.60 |
+| **Clone detection**, wav2vec2 probe, leave-one-persona-out | **89.8%** accuracy, **14.5%** false positives on originals (Ivy is the weakest persona, at 66%) |
+| Clone detection, pretrained deepfake model (zero-shot) | flagged 0% of anything as fake, so it fails on modern TTS |
+| **Minutes** per voice per file (10 pairs) | MAPE **10.8%**; always under-counts (−12.9% overall), which is the safe direction for billing |
+| Who-is-speaking, frame accuracy | 87.6% |
+| **Use type** (Gemini) | 5/5 demo files, 40/40 labelled sentences (clear-cut sentences, so an easy set) |
+| **Billing** | 12 tests: decisions, cent rounding, the fee never takes the owner's rounding cent, retry-safe payouts (no double pay), hash-chain tamper detection |
+| PayPal sandbox, end to end | invoice → signed `INVOICING.INVOICE.PAID` → Payout `SUCCESS` → signed `PAYMENT.PAYOUTS-ITEM.SUCCEEDED`; PayPal's own retry was handled correctly |
+
+What these numbers don't show: real human voices, noisy or compressed audio, music beds, deliberate evasion, or voices that sound alike. See *Limitations*.
 
 ## Consent and privacy
 

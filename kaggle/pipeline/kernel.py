@@ -27,6 +27,12 @@ class _Tee:  # keep a copy of stdout/stderr in /kaggle/working so a crashed sess
     def flush(self):
         for f in self.s: f.flush()
 
+    def isatty(self):
+        return False
+
+    def __getattr__(self, name):
+        return getattr(self.s[0], name)
+
 
 _log = open(f"{W}/run.log", "a")
 sys.stdout, sys.stderr = _Tee(sys.stdout, _log), _Tee(sys.stderr, _log)
@@ -102,8 +108,18 @@ for fid, title, fname, desc, parts in DEMOS:
 
 # ---------- 2a. enrolment + calibration ----------
 from speechbrain.inference.speaker import EncoderClassifier
-enc = EncoderClassifier.from_hparams("speechbrain/spkrec-ecapa-voxceleb", savedir="/kaggle/tmp/ecapa",
-                                     run_opts={"device": dev})
+import huggingface_hub as _hh
+_orig_dl = _hh.hf_hub_download
+
+
+def _dl(*a, **k):  # speechbrain 1.0.3 still passes use_auth_token, which new huggingface_hub rejects
+    k.pop("use_auth_token", None)
+    return _orig_dl(*a, **k)
+
+
+_hh.hf_hub_download = _dl
+ECAPA = _hh.snapshot_download("speechbrain/spkrec-ecapa-voxceleb", local_dir="/kaggle/tmp/ecapa_src")
+enc = EncoderClassifier.from_hparams(source=ECAPA, savedir="/kaggle/tmp/ecapa", run_opts={"device": dev})
 
 
 def emb_batch(chunks):

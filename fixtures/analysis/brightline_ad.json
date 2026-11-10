@@ -1,0 +1,134 @@
+{
+ "file_id": "brightline_ad",
+ "file_name": "brightline_spring_ad.wav",
+ "title": "Brightline spring campaign (radio ad)",
+ "description": "A 60-second radio spot. Brightline licenses Mara Vell and Ivy Calder.",
+ "audio": "brightline_spring_ad.mp3",
+ "duration_s": 39.42,
+ "eer_threshold": 0.5017023086547852,
+ "transcript": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today and get unlimited storage for your whole family. Crisp, cold and refreshing, polar spring water straight from the mountains. This weekend only, every pair of running shoes is 30% off. Don't miss it.",
+ "segments": [
+  {
+   "start": 0.61,
+   "end": 5.11,
+   "voice_id": "mara",
+   "score": 0.6059,
+   "clone_prob": 0.996,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 5.89,
+   "end": 7.89,
+   "voice_id": "mara",
+   "score": 0.6757,
+   "clone_prob": 0.999,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 8.16,
+   "end": 9.66,
+   "voice_id": "mara",
+   "score": 0.6289,
+   "clone_prob": 1.0,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 10.78,
+   "end": 14.28,
+   "voice_id": "mara",
+   "score": 0.6092,
+   "clone_prob": 0.999,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 15.33,
+   "end": 17.33,
+   "voice_id": "mara",
+   "score": 0.5692,
+   "clone_prob": 1.0,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 18.14,
+   "end": 19.55,
+   "voice_id": "mara",
+   "score": 0.6601,
+   "clone_prob": 0.996,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 20.0,
+   "end": 22.5,
+   "voice_id": "mara",
+   "score": 0.5664,
+   "clone_prob": 1.0,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 23.26,
+   "end": 24.19,
+   "voice_id": null,
+   "score": 0.3014,
+   "clone_prob": 0.999,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 24.61,
+   "end": 26.11,
+   "voice_id": "mara",
+   "score": 0.6155,
+   "clone_prob": 1.0,
+   "text": "Introducing the all-new Brightline Blender with twice the power and half the noise. Feel the difference with Harbor mattresses. Try one free for a hundred nights. Book your summer getaway now and save up to $200 on flights. Fresh coffee delivered to your door every Monday. Your first box is on us. Switch your phone plan in five minutes and keep your number. It's that easy. Upgrade to Nimbus Cloud today"
+  },
+  {
+   "start": 26.53,
+   "end": 28.53,
+   "voice_id": "mara",
+   "score": 0.6064,
+   "clone_prob": 1.0,
+   "text": "and get unlimited storage for your whole family."
+  },
+  {
+   "start": 29.66,
+   "end": 31.16,
+   "voice_id": "ivy",
+   "score": 0.6815,
+   "clone_prob": 0.998,
+   "text": "Crisp, cold and refreshing,"
+  },
+  {
+   "start": 31.42,
+   "end": 33.42,
+   "voice_id": "ivy",
+   "score": 0.6353,
+   "clone_prob": 0.998,
+   "text": "polar spring water straight from the mountains."
+  },
+  {
+   "start": 34.01,
+   "end": 37.51,
+   "voice_id": "mara",
+   "score": 0.6308,
+   "clone_prob": 0.998,
+   "text": "This weekend only, every pair of running shoes is 30% off."
+  },
+  {
+   "start": 38.11,
+   "end": 38.75,
+   "voice_id": null,
+   "score": 0.4916,
+   "clone_prob": 1.0,
+   "text": "Don't miss it."
+  }
+ ],
+ "pipeline": {
+  "vad": "silero-vad",
+  "diarization": "enrolled-voice sliding-window ECAPA (1.5 s/0.5 s)",
+  "embedding": "speechbrain/spkrec-ecapa-voxceleb",
+  "clone_detector": "wav2vec2-base probe, leave-one-persona-out",
+  "asr": "openai/whisper-small",
+  "use_type": "Gemini (structured output)"
+ },
+ "use_type": "ad",
+ "use_type_reason": "The transcript promotes multiple commercial products and sales with phrases like introducing the all-new blender and every pair of running shoes is 30% off."
+}

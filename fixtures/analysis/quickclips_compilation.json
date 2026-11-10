@@ -1,0 +1,62 @@
+{
+ "file_id": "quickclips_compilation",
+ "file_name": "quickclips_life_hacks.wav",
+ "title": "QuickClips 'Life hacks' compilation",
+ "description": "A social video built from cloned voices, with no licences at all.",
+ "audio": "quickclips_life_hacks.mp3",
+ "duration_s": 18.13,
+ "eer_threshold": 0.5017023086547852,
+ "transcript": "Hey everyone, welcome back to the show. Today we're talking about the best budget cameras. So I tried cooking every meal at home for a month, and here's what happened. Quick tip if your bread is going stale, sprinkle it with water and warm it in the oven. Don't forget to like and subscribe, it really helps the channel grow.",
+ "segments": [
+  {
+   "start": 0.61,
+   "end": 2.11,
+   "voice_id": "juno",
+   "score": 0.7351,
+   "clone_prob": 1.0,
+   "text": "Hey everyone, welcome back to the show. Today we're talking about the best budget cameras."
+  },
+  {
+   "start": 2.85,
+   "end": 4.85,
+   "voice_id": "juno",
+   "score": 0.6549,
+   "clone_prob": 1.0,
+   "text": "Hey everyone, welcome back to the show. Today we're talking about the best budget cameras."
+  },
+  {
+   "start": 5.47,
+   "end": 8.47,
+   "voice_id": "juno",
+   "score": 0.618,
+   "clone_prob": 0.999,
+   "text": "So I tried cooking every meal at home for a month, and here's what happened. Quick tip"
+  },
+  {
+   "start": 9.28,
+   "end": 13.78,
+   "voice_id": "mara",
+   "score": 0.5605,
+   "clone_prob": 0.997,
+   "text": "So I tried cooking every meal at home for a month, and here's what happened. Quick tip if your bread is going stale, sprinkle it with water and warm it in the oven. Don't"
+  },
+  {
+   "start": 14.56,
+   "end": 17.56,
+   "voice_id": "juno",
+   "score": 0.6475,
+   "clone_prob": 0.999,
+   "text": "forget to like and subscribe, it really helps the channel grow."
+  }
+ ],
+ "pipeline": {
+  "vad": "silero-vad",
+  "diarization": "enrolled-voice sliding-window ECAPA (1.5 s/0.5 s)",
+  "embedding": "speechbrain/spkrec-ecapa-voxceleb",
+  "clone_detector": "wav2vec2-base probe, leave-one-persona-out",
+  "asr": "openai/whisper-small",
+  "use_type": "Gemini (structured output)"
+ },
+ "use_type": "social",
+ "use_type_reason": "The phrases welcome back to the show and like and subscribe indicate a creator video or podcast."
+}

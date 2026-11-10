@@ -1,0 +1,46 @@
+{
+ "file_id": "northpeak_trailer",
+ "duration_s": 22.423,
+ "segments": [
+  {
+   "start": 0.6,
+   "end": 3.672,
+   "voice_id": "theo",
+   "is_clone": true,
+   "sentence": 20,
+   "text": "Stay behind me. The bridge won't hold us both if we run."
+  },
+  {
+   "start": 4.181,
+   "end": 6.997,
+   "voice_id": "silas",
+   "is_clone": true,
+   "sentence": 23,
+   "text": "Shields are down to forty percent. We need to retreat, now!"
+  },
+  {
+   "start": 7.568,
+   "end": 11.952,
+   "voice_id": "theo",
+   "is_clone": true,
+   "sentence": 22,
+   "text": "Traveller, you look tired. Sit by the fire and tell me where you have come from."
+  },
+  {
+   "start": 12.728,
+   "end": 16.376,
+   "voice_id": "silas",
+   "is_clone": false,
+   "sentence": 21,
+   "text": "You found the silver key. Maybe it opens the door in the east tower."
+  },
+  {
+   "start": 17.098,
+   "end": 22.026,
+   "voice_id": "theo",
+   "is_clone": true,
+   "sentence": 15,
+   "text": "He counted the steps to the top of the tower. There were exactly two hundred and twelve."
+  }
+ ]
+}

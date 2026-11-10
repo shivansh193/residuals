@@ -1,0 +1,38 @@
+{
+ "file_id": "measure12_ad",
+ "duration_s": 19.646,
+ "segments": [
+  {
+   "start": 0.6,
+   "end": 4.76,
+   "voice_id": "silas",
+   "is_clone": true,
+   "sentence": 28,
+   "text": "Vote for change this November. Together we can fix the roads and lower your taxes."
+  },
+  {
+   "start": 5.21,
+   "end": 8.762,
+   "voice_id": "silas",
+   "is_clone": true,
+   "sentence": 31,
+   "text": "Support Measure Twelve and keep our schools funded for the next generation."
+  },
+  {
+   "start": 9.55,
+   "end": 13.945,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 29,
+   "text": "My opponent has failed this district for ten years. It's time for new leadership."
+  },
+  {
+   "start": 14.531,
+   "end": 19.043,
+   "voice_id": "silas",
+   "is_clone": true,
+   "sentence": 30,
+   "text": "Paid for by the committee to elect a better council. Make your voice heard on election day."
+  }
+ ]
+}

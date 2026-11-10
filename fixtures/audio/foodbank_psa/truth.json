@@ -1,0 +1,38 @@
+{
+ "file_id": "foodbank_psa",
+ "duration_s": 23.742,
+ "segments": [
+  {
+   "start": 0.6,
+   "end": 6.712,
+   "voice_id": "mara",
+   "is_clone": false,
+   "sentence": 26,
+   "text": "Our food bank is open every Saturday morning. Everyone is welcome, no questions asked."
+  },
+  {
+   "start": 7.136,
+   "end": 11.381,
+   "voice_id": "juno",
+   "is_clone": true,
+   "sentence": 24,
+   "text": "Every donation helps us plant trees in communities that lost their forests to wildfire."
+  },
+  {
+   "start": 12.038,
+   "end": 17.83,
+   "voice_id": "mara",
+   "is_clone": false,
+   "sentence": 27,
+   "text": "Volunteers are needed to help clean the beach this Sunday. Gloves and bags are provided."
+  },
+  {
+   "start": 18.55,
+   "end": 23.19,
+   "voice_id": "juno",
+   "is_clone": true,
+   "sentence": 25,
+   "text": "Remember to check on your elderly neighbours during the heatwave. A short visit can save a life."
+  }
+ ]
+}

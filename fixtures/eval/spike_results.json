@@ -1,0 +1,98 @@
+{
+ "speaker_verification": {
+  "originals": {
+   "eer": 0.0,
+   "threshold": 0.7476,
+   "n_target": 200,
+   "n_nontarget": 800,
+   "target_mean": 0.862,
+   "nontarget_mean": 0.242,
+   "nontarget_max": 0.6,
+   "target_min": 0.748
+  },
+  "clones": {
+   "eer": 0.0,
+   "threshold": 0.6843,
+   "n_target": 200,
+   "n_nontarget": 800,
+   "target_mean": 0.821,
+   "nontarget_mean": 0.221,
+   "nontarget_max": 0.554,
+   "target_min": 0.684
+  },
+  "all": {
+   "eer": 0.0,
+   "threshold": 0.6843,
+   "n_target": 400,
+   "n_nontarget": 1600,
+   "target_mean": 0.841,
+   "nontarget_mean": 0.231,
+   "nontarget_max": 0.6,
+   "target_min": 0.684
+  },
+  "operating_point": {
+   "threshold": 0.6843,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "enrol_similarity": {
+   "mara": {
+    "mara": 1.0,
+    "theo": 0.235,
+    "juno": 0.409,
+    "silas": 0.216,
+    "ivy": 0.581
+   },
+   "theo": {
+    "mara": 0.235,
+    "theo": 1.0,
+    "juno": 0.14,
+    "silas": 0.266,
+    "ivy": 0.272
+   },
+   "juno": {
+    "mara": 0.409,
+    "theo": 0.14,
+    "juno": 1.0,
+    "silas": 0.205,
+    "ivy": 0.342
+   },
+   "silas": {
+    "mara": 0.216,
+    "theo": 0.266,
+    "juno": 0.205,
+    "silas": 1.0,
+    "ivy": 0.171
+   },
+   "ivy": {
+    "mara": 0.581,
+    "theo": 0.272,
+    "juno": 0.342,
+    "silas": 0.171,
+    "ivy": 1.0
+   }
+  }
+ },
+ "clone_detection_w2v2_probe_lopo": {
+  "accuracy": 0.8975,
+  "false_positive_rate_on_originals": 0.145,
+  "recall_on_clones": 0.94,
+  "per_heldout_persona_accuracy": {
+   "mara": 0.85,
+   "theo": 1.0,
+   "juno": 1.0,
+   "silas": 0.975,
+   "ivy": 0.6625
+  },
+  "n": 400
+ },
+ "clone_detection_pretrained_zero_shot": {
+  "model": "MelodyMachine/Deepfake-audio-detection-V2",
+  "labels_seen": [
+   "fake",
+   "real"
+  ],
+  "flagged_fake_originals": 0.0,
+  "flagged_fake_clones": 0.0
+ }
+}

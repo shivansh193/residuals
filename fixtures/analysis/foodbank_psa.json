@@ -1,0 +1,78 @@
+{
+ "file_id": "foodbank_psa",
+ "file_name": "harbor_food_bank_psa.wav",
+ "title": "Harbor Food Bank PSA",
+ "description": "A non-profit announcement. Mara and Juno let non-profits use their voices for free.",
+ "audio": "harbor_food_bank_psa.mp3",
+ "duration_s": 23.74,
+ "eer_threshold": 0.5017023086547852,
+ "transcript": "Our food bank is open every Saturday morning. Everyone is welcome, no questions asked. Every donation helps us plant trees in communities that lost their forests to wildfire. Volunteers are needed to help clean the beach this Sunday. Gloves and bags are provided. Remember to check on your elderly neighbors during the heat wave. A short visit can save a life.",
+ "segments": [
+  {
+   "start": 0.64,
+   "end": 3.14,
+   "voice_id": "mara",
+   "score": 0.7097,
+   "clone_prob": 0.942,
+   "text": "Our food bank is open every Saturday morning."
+  },
+  {
+   "start": 3.97,
+   "end": 6.47,
+   "voice_id": "mara",
+   "score": 0.6801,
+   "clone_prob": 0.853,
+   "text": "Everyone is welcome, no questions asked."
+  },
+  {
+   "start": 7.13,
+   "end": 11.13,
+   "voice_id": "juno",
+   "score": 0.6147,
+   "clone_prob": 1.0,
+   "text": "Every donation helps us plant trees in communities that lost their forests to wildfire."
+  },
+  {
+   "start": 12.06,
+   "end": 15.06,
+   "voice_id": "mara",
+   "score": 0.7002,
+   "clone_prob": 0.959,
+   "text": "Volunteers are needed to help clean the beach this Sunday."
+  },
+  {
+   "start": 15.87,
+   "end": 17.87,
+   "voice_id": "mara",
+   "score": 0.7522,
+   "clone_prob": 0.928,
+   "text": "Gloves and bags are provided."
+  },
+  {
+   "start": 18.56,
+   "end": 21.06,
+   "voice_id": "juno",
+   "score": 0.6056,
+   "clone_prob": 1.0,
+   "text": "Remember to check on your elderly neighbors during the heat wave."
+  },
+  {
+   "start": 21.76,
+   "end": 23.26,
+   "voice_id": "juno",
+   "score": 0.5929,
+   "clone_prob": 1.0,
+   "text": "A short visit can save a life."
+  }
+ ],
+ "pipeline": {
+  "vad": "silero-vad",
+  "diarization": "enrolled-voice sliding-window ECAPA (1.5 s/0.5 s)",
+  "embedding": "speechbrain/spkrec-ecapa-voxceleb",
+  "clone_detector": "wav2vec2-base probe, leave-one-persona-out",
+  "asr": "openai/whisper-small",
+  "use_type": "Gemini (structured output)"
+ },
+ "use_type": "nonprofit",
+ "use_type_reason": "The mention of our food bank, donations, and community volunteer work clearly indicates a public-service or charity announcement."
+}

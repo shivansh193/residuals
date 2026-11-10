@@ -47,7 +47,7 @@ export default function Enrol() {
   const [consent, setConsent] = useState(null)
   const [live, setLive] = useState(null)
   const [ref, setRef] = useState(null)
-  const [terms, setTerms] = useState('$0.50 per minute for ads, free for non-profits, never for politics.')
+  const [terms, setTerms] = useState('$30 per minute for ads, $12 for anything else, free for non-profits, never for politics.')
   const [policy, setPolicy] = useState(null)
   const [busy, setBusy] = useState('')
   const [err, setErr] = useState('')

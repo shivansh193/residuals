@@ -49,8 +49,10 @@ def normalise(raw):
         t = r.get("use_type")
         if t in USE_TYPES and t not in blocked and t not in free:
             rates[t] = max(0, int(r["cents_per_min"]))
+    default = max(0, int(raw.get("default_rate_cents_per_min", 40)))
+    rates = {k: v for k, v in rates.items() if v != default}  # a rate equal to the default adds nothing
     return {"currency": "USD", "rates_cents_per_min": rates,
-            "default_rate_cents_per_min": max(0, int(raw.get("default_rate_cents_per_min", 40))),
+            "default_rate_cents_per_min": default,
             "free_for": free, "blocked": blocked,
             "attribution_required": bool(raw.get("attribution_required", False)),
             "notes": raw.get("notes", "")}

@@ -1,0 +1,70 @@
+{
+ "file_id": "brightline_ad",
+ "duration_s": 39.419,
+ "segments": [
+  {
+   "start": 0.6,
+   "end": 5.24,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 0,
+   "text": "Introducing the all new Brightline blender, with twice the power and half the noise."
+  },
+  {
+   "start": 5.871,
+   "end": 10.01,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 4,
+   "text": "Feel the difference with Harbor mattresses. Try one free for a hundred nights."
+  },
+  {
+   "start": 10.764,
+   "end": 14.604,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 5,
+   "text": "Book your summer getaway now and save up to two hundred dollars on flights."
+  },
+  {
+   "start": 15.303,
+   "end": 19.505,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 2,
+   "text": "Fresh coffee, delivered to your door every Monday. Your first box is on us."
+  },
+  {
+   "start": 19.957,
+   "end": 24.117,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 7,
+   "text": "Switch your phone plan in five minutes and keep your number. It's that easy."
+  },
+  {
+   "start": 24.602,
+   "end": 28.901,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 3,
+   "text": "Upgrade to Nimbus Cloud today and get unlimited storage for your whole family."
+  },
+  {
+   "start": 29.644,
+   "end": 33.676,
+   "voice_id": "ivy",
+   "is_clone": false,
+   "sentence": 6,
+   "text": "Crisp, cold and refreshing. Polar Spring water, straight from the mountains."
+  },
+  {
+   "start": 34.028,
+   "end": 38.7,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 1,
+   "text": "This weekend only, every pair of running shoes is thirty percent off. Don't miss it."
+  }
+ ]
+}

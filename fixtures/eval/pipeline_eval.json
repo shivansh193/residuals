@@ -1,0 +1,101 @@
+{
+ "window_threshold": 0.5017023086547852,
+ "window_eer": 0.010880316518298683,
+ "files": {
+  "brightline_ad": {
+   "frame_label_accuracy_in_speech": 0.8191,
+   "per_voice_minutes": {
+    "mara": {
+     "truth_s": 29.95,
+     "pred_s": 24.41,
+     "abs_err_s": 5.54
+    },
+    "ivy": {
+     "truth_s": 4.03,
+     "pred_s": 3.5,
+     "abs_err_s": 0.53
+    }
+   },
+   "segments_pred": 14,
+   "segments_truth": 8,
+   "clone_label_accuracy": 0.833,
+   "false_voice_frames": 6
+  },
+  "northpeak_trailer": {
+   "frame_label_accuracy_in_speech": 0.8918,
+   "per_voice_minutes": {
+    "theo": {
+     "truth_s": 12.38,
+     "pred_s": 10.83,
+     "abs_err_s": 1.55
+    },
+    "silas": {
+     "truth_s": 6.46,
+     "pred_s": 6.0,
+     "abs_err_s": 0.46
+    }
+   },
+   "segments_pred": 7,
+   "segments_truth": 5,
+   "clone_label_accuracy": 0.857,
+   "false_voice_frames": 2
+  },
+  "quickclips_compilation": {
+   "frame_label_accuracy_in_speech": 0.9092,
+   "per_voice_minutes": {
+    "juno": {
+     "truth_s": 10.83,
+     "pred_s": 9.5,
+     "abs_err_s": 1.33
+    },
+    "mara": {
+     "truth_s": 4.48,
+     "pred_s": 4.5,
+     "abs_err_s": 0.02
+    }
+   },
+   "segments_pred": 5,
+   "segments_truth": 4,
+   "clone_label_accuracy": 1.0,
+   "false_voice_frames": 7
+  },
+  "measure12_ad": {
+   "frame_label_accuracy_in_speech": 0.9013,
+   "per_voice_minutes": {
+    "silas": {
+     "truth_s": 12.22,
+     "pred_s": 11.22,
+     "abs_err_s": 1.0
+    },
+    "mara": {
+     "truth_s": 4.39,
+     "pred_s": 3.96,
+     "abs_err_s": 0.43
+    }
+   },
+   "segments_pred": 6,
+   "segments_truth": 4,
+   "clone_label_accuracy": 1.0,
+   "false_voice_frames": 20
+  },
+  "foodbank_psa": {
+   "frame_label_accuracy_in_speech": 0.8605,
+   "per_voice_minutes": {
+    "juno": {
+     "truth_s": 8.89,
+     "pred_s": 8.0,
+     "abs_err_s": 0.89
+    },
+    "mara": {
+     "truth_s": 11.9,
+     "pred_s": 10.0,
+     "abs_err_s": 1.9
+    }
+   },
+   "segments_pred": 7,
+   "segments_truth": 4,
+   "clone_label_accuracy": 0.429,
+   "false_voice_frames": 12
+  }
+ }
+}

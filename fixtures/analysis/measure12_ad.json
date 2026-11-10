@@ -1,0 +1,70 @@
+{
+ "file_id": "measure12_ad",
+ "file_name": "measure12_campaign_spot.wav",
+ "title": "Measure 12 campaign spot",
+ "description": "A political ad using clones of voices whose owners block political use.",
+ "audio": "measure12_campaign_spot.mp3",
+ "duration_s": 19.65,
+ "eer_threshold": 0.5017023086547852,
+ "transcript": "Vote for change this November, together we can fix the roads and lower your taxes. Support Measure 12 and keep our schools funded for the next generation. My opponent has failed this district for 10 years, it's time for new leadership. Paid for by the committee to elect a better council, make your voice heard on election day.",
+ "segments": [
+  {
+   "start": 0.61,
+   "end": 4.83,
+   "voice_id": "silas",
+   "score": 0.6905,
+   "clone_prob": 0.993,
+   "text": "Vote for change this November, together we can fix the roads and lower your taxes."
+  },
+  {
+   "start": 5.25,
+   "end": 8.75,
+   "voice_id": "silas",
+   "score": 0.6605,
+   "clone_prob": 0.998,
+   "text": "Vote for change this November, together we can fix the roads and lower your taxes. Support Measure 12 and keep our schools funded for the next generation."
+  },
+  {
+   "start": 9.57,
+   "end": 12.07,
+   "voice_id": "mara",
+   "score": 0.6282,
+   "clone_prob": 0.999,
+   "text": "My opponent has failed this district for 10 years, it's time for new leadership."
+  },
+  {
+   "start": 12.61,
+   "end": 14.07,
+   "voice_id": "mara",
+   "score": 0.6542,
+   "clone_prob": 0.999,
+   "text": "My opponent has failed this district for 10 years, it's time for new leadership."
+  },
+  {
+   "start": 14.56,
+   "end": 16.56,
+   "voice_id": "silas",
+   "score": 0.6448,
+   "clone_prob": 1.0,
+   "text": "Paid for by the committee to elect a better council, make your voice heard on election"
+  },
+  {
+   "start": 17.25,
+   "end": 18.75,
+   "voice_id": "silas",
+   "score": 0.7237,
+   "clone_prob": 1.0,
+   "text": "Paid for by the committee to elect a better council, make your voice heard on election"
+  }
+ ],
+ "pipeline": {
+  "vad": "silero-vad",
+  "diarization": "enrolled-voice sliding-window ECAPA (1.5 s/0.5 s)",
+  "embedding": "speechbrain/spkrec-ecapa-voxceleb",
+  "clone_detector": "wav2vec2-base probe, leave-one-persona-out",
+  "asr": "openai/whisper-small",
+  "use_type": "Gemini (structured output)"
+ },
+ "use_type": "political",
+ "use_type_reason": "The mention of voting for a candidate and paying for it by a committee indicates a political campaign."
+}

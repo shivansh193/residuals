@@ -1,0 +1,272 @@
+{
+ "accuracy": 1.0,
+ "n": 40,
+ "confusion": {
+  "ad": {
+   "ad": 8
+  },
+  "narration": {
+   "narration": 8
+  },
+  "elearning": {
+   "elearning": 4
+  },
+  "game": {
+   "game": 4
+  },
+  "nonprofit": {
+   "nonprofit": 4
+  },
+  "political": {
+   "political": 4
+  },
+  "social": {
+   "social": 4
+  },
+  "other": {
+   "other": 4
+  }
+ },
+ "rows": [
+  {
+   "i": 0,
+   "text": "Introducing the all new Brightline blender, with twice the power and half the noise.",
+   "truth": "ad",
+   "pred": "ad"
+  },
+  {
+   "i": 1,
+   "text": "This weekend only, every pair of running shoes is thirty percent off. Don't miss it.",
+   "truth": "ad",
+   "pred": "ad"
+  },
+  {
+   "i": 2,
+   "text": "Fresh coffee, delivered to your door every Monday. Your first box is on us.",
+   "truth": "ad",
+   "pred": "ad"
+  },
+  {
+   "i": 3,
+   "text": "Upgrade to Nimbus Cloud today and get unlimited storage for your whole family.",
+   "truth": "ad",
+   "pred": "ad"
+  },
+  {
+   "i": 4,
+   "text": "Feel the difference with Harbor mattresses. Try one free for a hundred nights.",
+   "truth": "ad",
+   "pred": "ad"
+  },
+  {
+   "i": 5,
+   "text": "Book your summer getaway now and save up to two hundred dollars on flights.",
+   "truth": "ad",
+   "pred": "ad"
+  },
+  {
+   "i": 6,
+   "text": "Crisp, cold and refreshing. Polar Spring water, straight from the mountains.",
+   "truth": "ad",
+   "pred": "ad"
+  },
+  {
+   "i": 7,
+   "text": "Switch your phone plan in five minutes and keep your number. It's that easy.",
+   "truth": "ad",
+   "pred": "ad"
+  },
+  {
+   "i": 8,
+   "text": "Chapter three. The letter arrived on a Tuesday, folded twice and sealed with blue wax.",
+   "truth": "narration",
+   "pred": "narration"
+  },
+  {
+   "i": 9,
+   "text": "The river had changed its course many times over the centuries, carving the valley we see today.",
+   "truth": "narration",
+   "pred": "narration"
+  },
+  {
+   "i": 10,
+   "text": "She paused at the door, listening to the rain, and wondered whether he would come back at all.",
+   "truth": "narration",
+   "pred": "narration"
+  },
+  {
+   "i": 11,
+   "text": "In the deep ocean, where sunlight never reaches, strange creatures make their own light.",
+   "truth": "narration",
+   "pred": "narration"
+  },
+  {
+   "i": 12,
+   "text": "The old lighthouse keeper kept a journal, and every entry began with the weather.",
+   "truth": "narration",
+   "pred": "narration"
+  },
+  {
+   "i": 13,
+   "text": "By the end of the war, the small village had lost half of its families to the city.",
+   "truth": "narration",
+   "pred": "narration"
+  },
+  {
+   "i": 14,
+   "text": "Bees communicate the location of flowers to each other with a dance inside the hive.",
+   "truth": "narration",
+   "pred": "narration"
+  },
+  {
+   "i": 15,
+   "text": "He counted the steps to the top of the tower. There were exactly two hundred and twelve.",
+   "truth": "narration",
+   "pred": "narration"
+  },
+  {
+   "i": 16,
+   "text": "Welcome to module two. In this lesson, we will cover the basics of workplace safety.",
+   "truth": "elearning",
+   "pred": "elearning"
+  },
+  {
+   "i": 17,
+   "text": "Before you begin, make sure your headphones are connected and your volume is turned up.",
+   "truth": "elearning",
+   "pred": "elearning"
+  },
+  {
+   "i": 18,
+   "text": "Click next to continue, or select replay to watch this section again.",
+   "truth": "elearning",
+   "pred": "elearning"
+  },
+  {
+   "i": 19,
+   "text": "Quarterly revenue grew by eight percent, driven mostly by strong sales in the north region.",
+   "truth": "elearning",
+   "pred": "elearning"
+  },
+  {
+   "i": 20,
+   "text": "Stay behind me. The bridge won't hold us both if we run.",
+   "truth": "game",
+   "pred": "game"
+  },
+  {
+   "i": 21,
+   "text": "You found the silver key. Maybe it opens the door in the east tower.",
+   "truth": "game",
+   "pred": "game"
+  },
+  {
+   "i": 22,
+   "text": "Traveller, you look tired. Sit by the fire and tell me where you have come from.",
+   "truth": "game",
+   "pred": "game"
+  },
+  {
+   "i": 23,
+   "text": "Shields are down to forty percent. We need to retreat, now!",
+   "truth": "game",
+   "pred": "game"
+  },
+  {
+   "i": 24,
+   "text": "Every donation helps us plant trees in communities that lost their forests to wildfire.",
+   "truth": "nonprofit",
+   "pred": "nonprofit"
+  },
+  {
+   "i": 25,
+   "text": "Remember to check on your elderly neighbours during the heatwave. A short visit can save a life.",
+   "truth": "nonprofit",
+   "pred": "nonprofit"
+  },
+  {
+   "i": 26,
+   "text": "Our food bank is open every Saturday morning. Everyone is welcome, no questions asked.",
+   "truth": "nonprofit",
+   "pred": "nonprofit"
+  },
+  {
+   "i": 27,
+   "text": "Volunteers are needed to help clean the beach this Sunday. Gloves and bags are provided.",
+   "truth": "nonprofit",
+   "pred": "nonprofit"
+  },
+  {
+   "i": 28,
+   "text": "Vote for change this November. Together we can fix the roads and lower your taxes.",
+   "truth": "political",
+   "pred": "political"
+  },
+  {
+   "i": 29,
+   "text": "My opponent has failed this district for ten years. It's time for new leadership.",
+   "truth": "political",
+   "pred": "political"
+  },
+  {
+   "i": 30,
+   "text": "Paid for by the committee to elect a better council. Make your voice heard on election day.",
+   "truth": "political",
+   "pred": "political"
+  },
+  {
+   "i": 31,
+   "text": "Support Measure Twelve and keep our schools funded for the next generation.",
+   "truth": "political",
+   "pred": "political"
+  },
+  {
+   "i": 32,
+   "text": "Hey everyone, welcome back to the show. Today we're talking about the best budget cameras.",
+   "truth": "social",
+   "pred": "social"
+  },
+  {
+   "i": 33,
+   "text": "Don't forget to like and subscribe, it really helps the channel grow.",
+   "truth": "social",
+   "pred": "social"
+  },
+  {
+   "i": 34,
+   "text": "So I tried cooking every meal at home for a month, and here's what happened.",
+   "truth": "social",
+   "pred": "social"
+  },
+  {
+   "i": 35,
+   "text": "Quick tip: if your bread is going stale, sprinkle it with water and warm it in the oven.",
+   "truth": "social",
+   "pred": "social"
+  },
+  {
+   "i": 36,
+   "text": "I never said I would stay. I only said I would think about it.",
+   "truth": "other",
+   "pred": "other"
+  },
+  {
+   "i": 37,
+   "text": "The train to the city leaves from platform four in ten minutes.",
+   "truth": "other",
+   "pred": "other"
+  },
+  {
+   "i": 38,
+   "text": "Thank you for calling. Your call is important to us, please stay on the line.",
+   "truth": "other",
+   "pred": "other"
+  },
+  {
+   "i": 39,
+   "text": "Tomorrow will be mostly sunny with a light breeze from the west.",
+   "truth": "other",
+   "pred": "other"
+  }
+ ]
+}

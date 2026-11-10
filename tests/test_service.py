@@ -46,11 +46,11 @@ def test_licensed_unlicensed_blocked_review_in_one_scan():
     r = service.process_scan(analysis("ad", [("mara", 0, 74, 0.6), ("theo", 80, 110, 0.6),
                                              ("ivy", 120, 125, 0.30)]), "brightline")
     d = {m["voice_id"]: m for m in r["matches"]}
-    assert d["mara"]["decision"] == "bill" and d["mara"]["amount_cents"] == 62      # 74s @ 50c/min
-    assert d["theo"]["decision"] == "offer" and d["theo"]["amount_cents"] == 20     # 30s @ 40c default
+    assert d["mara"]["decision"] == "bill" and d["mara"]["amount_cents"] == 3700    # 74s @ $30/min
+    assert d["theo"]["decision"] == "offer" and d["theo"]["amount_cents"] == 500     # 30s @ $10 default
     assert d["ivy"]["decision"] == "review" and d["ivy"]["amount_cents"] == 0       # low confidence
     assert r["invoice"]["id"] == "INV-TEST-1" and r["invoice"]["offer"] is True
-    assert r["invoice"]["total"] == "0.82"
+    assert r["invoice"]["total"] == "42.00"
 
 
 def test_blocked_use_alerts_owner_and_is_not_invoiced():
@@ -67,7 +67,7 @@ def test_paid_invoice_pays_each_owner_once():
     assert all(a.endswith("already_paid") for a in again)
     assert len([c for c in CALLS if c[0] == "PAYOUT"]) == n
     royalty = [c for c in CALLS if c[0] == "PAYOUT" and "mara" in c[1]][0][2]
-    assert royalty == "0.56"                                  # 62c minus 10% fee (6c)
+    assert royalty == "33.30"                                 # $37.00 minus 10% fee
 
 
 def test_ledger_chain_valid_then_tamper_detected():

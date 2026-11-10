@@ -1,0 +1,38 @@
+{
+ "file_id": "quickclips_compilation",
+ "duration_s": 18.132,
+ "segments": [
+  {
+   "start": 0.6,
+   "end": 4.803,
+   "voice_id": "juno",
+   "is_clone": true,
+   "sentence": 32,
+   "text": "Hey everyone, welcome back to the show. Today we're talking about the best budget cameras."
+  },
+  {
+   "start": 5.459,
+   "end": 8.851,
+   "voice_id": "juno",
+   "is_clone": true,
+   "sentence": 34,
+   "text": "So I tried cooking every meal at home for a month, and here's what happened."
+  },
+  {
+   "start": 9.281,
+   "end": 13.761,
+   "voice_id": "mara",
+   "is_clone": true,
+   "sentence": 35,
+   "text": "Quick tip: if your bread is going stale, sprinkle it with water and warm it in the oven."
+  },
+  {
+   "start": 14.542,
+   "end": 17.774,
+   "voice_id": "juno",
+   "is_clone": true,
+   "sentence": 33,
+   "text": "Don't forget to like and subscribe, it really helps the channel grow."
+  }
+ ]
+}
