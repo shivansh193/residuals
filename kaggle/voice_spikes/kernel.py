@@ -252,18 +252,34 @@ print(json.dumps(cd, indent=1), flush=True)
 for name, code in [("a", PHASE_A), ("b", PHASE_B), ("c", PHASE_C)]:
     open(f"{T}/phase_{name}.py", "w").write(textwrap.dedent(code))
 
+PROG = f"{W}/progress.log"
+
+
 def sh(cmd, check=True):
+    """Run a step; keep its output in /kaggle/working so it survives a crashed session."""
+    n = len(open(PROG).read().splitlines()) if os.path.exists(PROG) else 0
+    logf = f"{W}/step_{n:02d}.log"
+    with open(PROG, "a") as f:
+        f.write(f"START {cmd}\n")
     print("+", cmd, flush=True)
-    return subprocess.run(cmd, shell=True, check=check)
+    with open(logf, "w") as lf:
+        r = subprocess.run(cmd, shell=True, stdout=lf, stderr=subprocess.STDOUT)
+    tail = open(logf, errors="replace").read()[-3000:]
+    print(tail, flush=True)
+    with open(PROG, "a") as f:
+        f.write(f"END rc={r.returncode} {cmd}\n")
+    if check and r.returncode:
+        raise SystemExit(f"step failed rc={r.returncode}: {cmd}")
+    return r
 
 sh("nvidia-smi --query-gpu=name,memory.total --format=csv", check=False)
 sh("python -c 'import torch,torchaudio,transformers;print(torch.__version__,torchaudio.__version__,transformers.__version__)'", check=False)
 sh("apt-get -qq update >/dev/null 2>&1; apt-get -qq install -y espeak-ng >/dev/null 2>&1", check=False)
 
-sh(f"python -m venv --without-pip --system-site-packages {T}/vk && {T}/vk/bin/python -m pip install -q --ignore-requires-python kokoro==0.9.4 'misaki[en]' soundfile")
+sh(f"python -m venv --without-pip --system-site-packages {T}/vk && {T}/vk/bin/python -m pip install -q --no-deps kokoro==0.9.4 misaki==0.9.4 && {T}/vk/bin/python -m pip install -q --prefer-binary num2words phonemizer-fork espeakng-loader loguru addict soundfile && ({T}/vk/bin/python -c 'import spacy' || {T}/vk/bin/python -m pip install -q --only-binary=:all: spacy) && {T}/vk/bin/python -m spacy download en_core_web_sm")
 sh(f"{T}/vk/bin/python {T}/phase_a.py")
 
-sh(f"python -m venv --without-pip --system-site-packages {T}/vf && {T}/vf/bin/python -m pip install -q --ignore-requires-python f5-tts soundfile")
+sh(f"python -m venv --without-pip --system-site-packages {T}/vf && {T}/vf/bin/python -m pip install -q --prefer-binary --ignore-requires-python f5-tts soundfile")
 sh(f"{T}/vf/bin/python -m pip install -q torchcodec", check=False)
 sh(f"{T}/vf/bin/python {T}/phase_b.py")
 

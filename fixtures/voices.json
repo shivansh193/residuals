@@ -1,0 +1,96 @@
+[
+ {
+  "id": "mara",
+  "name": "Mara Vell",
+  "terms_text": "$0.50 per minute for ads, free for non-profits, never for politics.",
+  "policy": {
+   "currency": "USD",
+   "rates_cents_per_min": {
+    "ad": 50
+   },
+   "default_rate_cents_per_min": 40,
+   "free_for": [
+    "nonprofit"
+   ],
+   "blocked": [
+    "political"
+   ],
+   "attribution_required": false,
+   "notes": ""
+  }
+ },
+ {
+  "id": "theo",
+  "name": "Theo Rusk",
+  "terms_text": "Narration and audiobooks 30 cents a minute, games $1 a minute, everything else 40 cents. No political ads, no adult content.",
+  "policy": {
+   "currency": "USD",
+   "rates_cents_per_min": {
+    "narration": 30,
+    "game": 100
+   },
+   "default_rate_cents_per_min": 40,
+   "free_for": [],
+   "blocked": [
+    "adult",
+    "political"
+   ],
+   "attribution_required": false,
+   "notes": ""
+  }
+ },
+ {
+  "id": "juno",
+  "name": "Juno Park",
+  "terms_text": "Ads 80 cents a minute, social videos 20 cents a minute. Free for non-profits. Credit me as Juno Park.",
+  "policy": {
+   "currency": "USD",
+   "rates_cents_per_min": {
+    "ad": 80,
+    "social": 20
+   },
+   "default_rate_cents_per_min": 40,
+   "free_for": [
+    "nonprofit"
+   ],
+   "blocked": [],
+   "attribution_required": true,
+   "notes": "Credit me as Juno Park."
+  }
+ },
+ {
+  "id": "silas",
+  "name": "Silas Orne",
+  "terms_text": "60 cents a minute for anything, but never for political campaigns.",
+  "policy": {
+   "currency": "USD",
+   "rates_cents_per_min": {},
+   "default_rate_cents_per_min": 60,
+   "free_for": [],
+   "blocked": [
+    "political"
+   ],
+   "attribution_required": false,
+   "notes": ""
+  }
+ },
+ {
+  "id": "ivy",
+  "name": "Ivy Calder",
+  "terms_text": "E-learning 25 cents a minute, ads 75 cents a minute, everything else 40 cents. Never for adult content.",
+  "policy": {
+   "currency": "USD",
+   "rates_cents_per_min": {
+    "elearning": 25,
+    "ad": 75
+   },
+   "default_rate_cents_per_min": 40,
+   "free_for": [],
+   "blocked": [
+    "adult"
+   ],
+   "attribution_required": false,
+   "notes": ""
+  }
+ }
+]
