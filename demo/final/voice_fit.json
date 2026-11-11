@@ -1,0 +1,101 @@
+[
+ {
+  "section": "hook",
+  "start": 0.3,
+  "length": 6.38,
+  "room": 7.85,
+  "tempo": 1.0,
+  "final_length": 6.38,
+  "fits": true
+ },
+ {
+  "section": "glance",
+  "start": 8.3,
+  "length": 8.2,
+  "room": 9.85,
+  "tempo": 1.0,
+  "final_length": 8.2,
+  "fits": true
+ },
+ {
+  "section": "enrol",
+  "start": 18.3,
+  "length": 15.05,
+  "room": 19.55,
+  "tempo": 1.0,
+  "final_length": 15.05,
+  "fits": true
+ },
+ {
+  "section": "detect",
+  "start": 38.0,
+  "length": 9.0,
+  "room": 7.85,
+  "tempo": 1.146,
+  "final_length": 7.87,
+  "fits": true
+ },
+ {
+  "section": "preclear",
+  "start": 46.0,
+  "length": 13.95,
+  "room": 20.94,
+  "tempo": 1.0,
+  "final_length": 13.95,
+  "fits": true
+ },
+ {
+  "section": "pay",
+  "start": 67.09,
+  "length": 13.45,
+  "room": 18.03,
+  "tempo": 1.0,
+  "final_length": 13.45,
+  "fits": true
+ },
+ {
+  "section": "paypal",
+  "start": 85.27,
+  "length": 5.9,
+  "room": 7.85,
+  "tempo": 1.0,
+  "final_length": 5.9,
+  "fits": true
+ },
+ {
+  "section": "offers",
+  "start": 93.27,
+  "length": 12.72,
+  "room": 23.67,
+  "tempo": 1.0,
+  "final_length": 12.72,
+  "fits": true
+ },
+ {
+  "section": "owner",
+  "start": 117.09,
+  "length": 7.5,
+  "room": 15.55,
+  "tempo": 1.0,
+  "final_length": 7.5,
+  "fits": true
+ },
+ {
+  "section": "results",
+  "start": 132.79,
+  "length": 7.72,
+  "room": 9.85,
+  "tempo": 1.0,
+  "final_length": 7.72,
+  "fits": true
+ },
+ {
+  "section": "outro",
+  "start": 142.79,
+  "length": 6.6,
+  "room": 6.25,
+  "tempo": 1.056,
+  "final_length": 6.26,
+  "fits": true
+ }
+]

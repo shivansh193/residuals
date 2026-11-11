@@ -55,7 +55,7 @@ CAPTIONS = {
               (12.8, "Gemini turns them into a policy. The owner confirms it.")],
     "preclear": [(0.2, "A brand pre-clears its radio ad. Demo files were analysed on a Kaggle GPU."),
                  (6.0, "Bryntum timeline: Mara Vell's voice, found as an AI clone."),
-                 (12.6, "Pre-clearance prices each voice by its owner's own terms.")],
+                 (14.6, "Pre-clearance prices each voice by its owner's own terms.")],
     "pay": [(0.2, "One PayPal invoice (Invoicing v2) for the licensed minutes."),
             (5.5, "Paid in the PayPal sandbox. The webhook takes about a minute (cut)."),
             (8.4, "Signed INVOICING.INVOICE.PAID verified → PayPal Payout to each owner."),
@@ -195,23 +195,23 @@ video.rec {{ position: absolute; left: 192px; top: 24px; width: 1536px; height: 
 .cap {{ position: absolute; left: 192px; width: 1536px; top: 1002px; height: 60px; display: flex; align-items: center; justify-content: center;
   font-size: 30px; font-weight: 600; letter-spacing: -.01em; opacity: 0; }}
 .cap::before {{ content: ''; width: 10px; height: 10px; border-radius: 50%; background: {ACCENT}; margin-right: 16px; flex: none; }}
-section {{ position: absolute; inset: 0; padding: 120px 160px; opacity: 0; background: #f4efe6; }}
+section {{ position: absolute; inset: 0; padding: 90px 160px 170px; opacity: 0; background: #f4efe6; display: flex; flex-direction: column; justify-content: center; }}
 .card-sec {{ display: flex; flex-direction: column; justify-content: center; }}
 .chap {{ font-size: 22px; letter-spacing: .3em; color: {ACCENT}; margin-bottom: 20px; }}
 .chapt {{ font-size: 96px; font-weight: 600; letter-spacing: -.035em; }}
 .eyebrow {{ font-size: 22px; letter-spacing: .22em; text-transform: uppercase; color: {ACCENT}; margin-bottom: 18px; }}
-h1 {{ font-size: 64px; font-weight: 600; letter-spacing: -.03em; line-height: 1.05; margin-bottom: 48px; }}
-h1.big {{ font-size: 120px; margin-top: 140px; }}
-.hook h1.big {{ font-size: 72px; line-height: 1.15; margin-top: 200px; max-width: 1500px; font-weight: 400; }}
-.title h1.big {{ font-size: 180px; margin-top: 210px; }}
+h1 {{ font-size: 76px; font-weight: 600; letter-spacing: -.03em; line-height: 1.05; margin-bottom: 48px; }}
+h1.big {{ font-size: 120px; }}
+.hook h1.big {{ font-size: 84px; line-height: 1.15; max-width: 1560px; font-weight: 400; }}
+.title h1.big {{ font-size: 200px; }}
 .title h1.big::after {{ content: '.'; color: {ACCENT}; }}
-.outro h1.big {{ font-size: 110px; margin-top: 230px; }}
+.outro h1.big {{ font-size: 120px; }}
 .cards {{ display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr); }}
 .cards.n5 {{ grid-template-columns: repeat(3, 1fr); }}
-.c {{ background: #fbf8f2; border: 1px solid #d9d0bf; border-radius: 18px; padding: 30px 32px; min-height: 190px; }}
-.k {{ font-size: 20px; letter-spacing: .12em; text-transform: uppercase; color: {ACCENT}; margin-bottom: 14px; }}
-.v {{ font-size: 30px; line-height: 1.3; }}
-.foot {{ position: absolute; left: 160px; right: 160px; bottom: 110px; font-size: 30px; color: #4a443c; }}
+.c {{ background: #fbf8f2; border: 1px solid #d9d0bf; border-radius: 18px; padding: 34px 36px; min-height: 230px; }}
+.k {{ font-size: 22px; letter-spacing: .12em; text-transform: uppercase; color: {ACCENT}; margin-bottom: 14px; }}
+.v {{ font-size: 35px; line-height: 1.3; }}
+.foot {{ position: absolute; left: 160px; right: 160px; bottom: 90px; font-size: 30px; color: #4a443c; }}
 .results .c:nth-child(2) .v, .results .c:nth-child(5) .v {{ color: #b3261e; }}
 """
 

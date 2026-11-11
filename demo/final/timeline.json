@@ -1,0 +1,147 @@
+{
+ "total": 149.49,
+ "sections": [
+  {
+   "section": "hook",
+   "start": 0.0,
+   "dur": 4.0
+  },
+  {
+   "section": "title",
+   "start": 4.0,
+   "dur": 4.0
+  },
+  {
+   "section": "glance",
+   "start": 8.0,
+   "dur": 10.0
+  },
+  {
+   "section": "enrol",
+   "start": 18.0,
+   "dur": 19.7
+  },
+  {
+   "section": "detect",
+   "start": 37.7,
+   "dur": 8.0
+  },
+  {
+   "section": "preclear",
+   "start": 45.7,
+   "dur": 21.09
+  },
+  {
+   "section": "pay",
+   "start": 66.78999999999999,
+   "dur": 18.18
+  },
+  {
+   "section": "paypal",
+   "start": 84.97,
+   "dur": 8.0
+  },
+  {
+   "section": "offers",
+   "start": 92.97,
+   "dur": 23.82
+  },
+  {
+   "section": "owner",
+   "start": 116.78999999999999,
+   "dur": 15.7
+  },
+  {
+   "section": "results",
+   "start": 132.48999999999998,
+   "dur": 10.0
+  },
+  {
+   "section": "outro",
+   "start": 142.48999999999998,
+   "dur": 7.0
+  }
+ ],
+ "captions": [
+  [
+   19.7,
+   7.5,
+   "Only the owner can enrol. A random phrase stops enrolment from an old recording."
+  ],
+  [
+   27.5,
+   4.8,
+   "Terms in plain English, as the owner would say them."
+  ],
+  [
+   32.3,
+   5.4,
+   "Gemini turns them into a policy. The owner confirms it."
+  ],
+  [
+   47.400000000000006,
+   5.8,
+   "A brand pre-clears its radio ad. Demo files were analysed on a Kaggle GPU."
+  ],
+  [
+   53.2,
+   7.5,
+   "Bryntum timeline: Mara Vell's voice, found as an AI clone."
+  ],
+  [
+   61.800000000000004,
+   4.99,
+   "Pre-clearance prices each voice by its owner's own terms."
+  ],
+  [
+   68.49,
+   5.3,
+   "One PayPal invoice (Invoicing v2) for the licensed minutes."
+  ],
+  [
+   73.78999999999999,
+   2.9,
+   "Paid in the PayPal sandbox. The webhook takes about a minute (cut)."
+  ],
+  [
+   76.69,
+   3.6,
+   "Signed INVOICING.INVOICE.PAID verified \u2192 PayPal Payout to each owner."
+  ],
+  [
+   80.28999999999999,
+   4.68,
+   "Payout confirmed by webhook. Real PayPal IDs, fees shown."
+  ],
+  [
+   94.67,
+   2.6,
+   "QuickClips holds no licences."
+  ],
+  [
+   97.27,
+   7.5,
+   "So it gets a retroactive licence offer, not a lawsuit."
+  ],
+  [
+   110.27,
+   2.2,
+   "Measure 12 is political. Both owners block that."
+  ],
+  [
+   112.47,
+   4.32,
+   "No offer at all: the use is blocked and the owners are alerted."
+  ],
+  [
+   118.49,
+   7.1,
+   "The owner's dashboard: royalties paid out, hash chain intact, alerts."
+  ],
+  [
+   125.58999999999999,
+   6.0,
+   "AG Grid ledger: every use, with its PayPal invoice and payout IDs."
+  ]
+ ]
+}

@@ -19,3 +19,5 @@ kaggle/*/kernel-metadata.json
 demo/kaggle/kernel-metadata.json
 demo/rec/*.webm
 demo/rec/sheet_*.jpg
+demo/out/
+demo/final/*.mp4
