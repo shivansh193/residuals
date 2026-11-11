@@ -5,7 +5,7 @@ from server import db
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OWNER_EMAIL = os.environ.get("SANDBOX_OWNER_EMAIL", "sb-7nfra53830207@business.example.com")
-BUYER_EMAIL = os.environ.get("SANDBOX_BUYER_EMAIL", "sb-ncztt53835122@personal.example.com")
+BUYER_EMAIL = os.environ.get("SANDBOX_BUYER_EMAIL", "sb-wqm5053792956@personal.example.com")
 
 USERS = [
     ("brightline", "Brightline Appliances (brand)", ["mara", "juno", "ivy"]),

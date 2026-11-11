@@ -132,7 +132,19 @@ SDKs for platforms, generated with **APIMatic** from the OpenAPI spec: [`sdk/pyt
 
 ### Sandbox accounts for judges
 
-SANDBOX_PLACEHOLDER
+These are PayPal **sandbox** test accounts: fake money only, with no access to anything real.
+
+| Role | PayPal sandbox login | Password |
+|------|----------------------|----------|
+| Voice user / brand (pays invoices) | `sb-wqm5053792956@personal.example.com` | `o!YE+Yx9` |
+
+1. After a scan, click **Pay with PayPal** in the invoice panel. This opens PayPal's sandbox invoice page.
+2. Log in with the account above and pay.
+3. Return to Residuals. PayPal usually sends `INVOICING.INVOICE.PAID` within 1-2 minutes, and the panel then shows the webhook, the payouts and their PayPal IDs.
+
+No login? **Mark paid (sandbox)** records the payment through the PayPal API and triggers the same webhook and payout chain.
+
+The free Render instance sleeps when idle, so the first request can take about a minute.
 
 ## Built with
 
