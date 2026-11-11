@@ -1,0 +1,40 @@
+{
+ "enrol": {
+  "loaded": 3.42,
+  "liveness": 7.61,
+  "typed": 16.73,
+  "parse_clicked": 19.11,
+  "policy_shown": 31.94,
+  "end": 36.67
+ },
+ "preclear": {
+  "loaded": 5.0,
+  "play": 6.34,
+  "hover_segment": 13.09,
+  "scan_clicked": 19.19,
+  "result": 21.17,
+  "result_read": 25.89,
+  "invoice_panel": 27.16,
+  "mark_paid": 33.11,
+  "webhook_paid": 61.31,
+  "payout_confirmed": 101.34,
+  "end": 106.17,
+  "invoice_id": "INV2-Z8Y6-PLWD-2WFT-4L38"
+ },
+ "offers": {
+  "loaded": 6.53,
+  "scan1": 13.55,
+  "offer": 15.66,
+  "offer_invoice": 23.56,
+  "scan2": 33.52,
+  "blocked": 33.66,
+  "end": 39.33
+ },
+ "owner": {
+  "loaded": 4.75,
+  "alert": 7.99,
+  "ledger": 11.64,
+  "paypal_columns": 18.58,
+  "end": 22.09
+ }
+}

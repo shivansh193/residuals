@@ -16,3 +16,6 @@ pretrained_models/
 /raw_audio/
 .DS_Store
 kaggle/*/kernel-metadata.json
+demo/kaggle/kernel-metadata.json
+demo/rec/*.webm
+demo/rec/sheet_*.jpg

@@ -1,0 +1,27 @@
+{
+  "voice": "bf_emma",
+  "lines": [
+    {"section": "hook", "spoken": "Voice clones are everywhere. The people they belong to don't know, and don't get paid. This is Residuals.",
+     "written": "Voice clones are everywhere. The people they belong to don't know, and don't get paid. This is Residuals."},
+    {"section": "glance", "spoken": "Residuals uses A I to find a registered voice in any audio, even as a clone, and pays its owner a royalty through PayPal.",
+     "written": "Residuals uses AI to find a registered voice in any audio, even as a clone, and pays its owner a royalty through PayPal."},
+    {"section": "enrol", "spoken": "Consent comes first. Only the owner can enrol their voice, by recording a consent statement and reading a random phrase, so an old recording can't pass. Then they set terms in plain English, and Gemini turns them into a policy they confirm.",
+     "written": "Consent comes first. Only the owner can enrol their voice, by recording a consent statement and reading a random phrase, so an old recording can't pass. Then they set terms in plain English, and Gemini turns them into a policy they confirm."},
+    {"section": "detect", "spoken": "Detection runs on a Kaggle G P U: speech detection, E C A P A voice embeddings, a clone detector, Whisper, and Gemini for the use type.",
+     "written": "Detection runs on a Kaggle GPU: speech detection, ECAPA voice embeddings, a clone detector, Whisper, and Gemini for the use type."},
+    {"section": "preclear", "spoken": "A brand pre-clears its radio ad. The timeline shows Mara Vell's voice, as an A I clone, and Ivy Calder's. Brightline holds licences for both, so each is priced by its owner's own terms: thirty dollars a minute for ads.",
+     "written": "A brand pre-clears its radio ad. The timeline shows Mara Vell's voice, as an AI clone, and Ivy Calder's. Brightline holds licences for both, so each is priced by its owner's own terms: $30 a minute for ads."},
+    {"section": "pay", "spoken": "One PayPal invoice covers the licensed minutes. When it's paid, PayPal sends a signed webhook. We verify it, and a PayPal Payout sends each owner their royalty, minus a ten percent platform fee shown on every line.",
+     "written": "One PayPal invoice covers the licensed minutes. When it's paid, PayPal sends a signed webhook. We verify it, and a PayPal Payout sends each owner their royalty, minus a 10% platform fee shown on every line."},
+    {"section": "paypal", "spoken": "Payouts are idempotent per invoice and voice, so a webhook retry can never pay twice.",
+     "written": "Payouts are idempotent per invoice and voice, so a webhook retry can never pay twice."},
+    {"section": "offers", "spoken": "No licence? QuickClips gets a retroactive licence offer instead of a lawsuit. But Mara never allows political use, so the Measure 12 ad gets no offer at all. It's blocked, and the owners are alerted.",
+     "written": "No licence? QuickClips gets a retroactive licence offer instead of a lawsuit. But Mara never allows political use, so the Measure 12 ad gets no offer at all. It's blocked, and the owners are alerted."},
+    {"section": "owner", "spoken": "Each owner sees every use, what it earned, and a hash-chained ledger in A G Grid, with the PayPal I Ds on every row.",
+     "written": "Each owner sees every use, what it earned, and a hash-chained ledger in AG Grid, with the PayPal IDs on every row."},
+    {"section": "results", "spoken": "On synthetic test voices, clones still match their owner. Clone detection is weaker, so it's shown as evidence, never billed.",
+     "written": "On synthetic test voices, clones still match their owner. Clone detection is weaker, so it's shown as evidence, never billed."},
+    {"section": "outro", "spoken": "Every voice here is a fictional synthetic persona. Residuals: your voice, your terms, your royalties.",
+     "written": "Every voice here is a fictional synthetic persona. Residuals: your voice, your terms, your royalties."}
+  ]
+}
